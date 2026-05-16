@@ -10,17 +10,10 @@ This guide explains how to deploy your full stack MERN project on Render.
 
 Go to:
 
-:contentReference[oaicite:0]{index=0}
+github
 
 Create a new repository.
 
-Example:
-
-```bash
-mern-project
-```
-
----
 
 ## Upload Your Project
 
@@ -38,20 +31,12 @@ Connect GitHub repository:
 git remote add origin YOUR_GITHUB_REPOSITORY_LINK
 ```
 
-Push code:
-
-```bash
-git branch -M main
-git push -u origin main
-```
-
----
 
 # Step 2 — Deploy Backend on Render
 
 Go to:
 
-:contentReference[oaicite:1]{index=1}
+render
 
 Login using GitHub.
 
@@ -155,119 +140,3 @@ https://your-backend-name.onrender.com
 ```
 
 ---
-
-# Step 7 — Test Backend API
-
-Open the deployed backend URL in browser.
-
-Example:
-
-```bash
-https://your-backend-name.onrender.com
-```
-
-If working correctly, backend should respond successfully.
-
----
-
-# Important Notes
-
-## Enable CORS in Backend
-
-Install CORS:
-
-```bash
-npm install cors
-```
-
-Backend example:
-
-```javascript
-const cors = require("cors");
-app.use(cors());
-```
-
----
-
-# Important for MongoDB Atlas Users
-
-In MongoDB Atlas:
-
-1. Open Network Access
-2. Allow IP Address:
-
-```bash
-0.0.0.0/0
-```
-
-This allows Render server to connect to MongoDB.
-
----
-
-# Common Deployment Errors
-
-## 1. Build Failed
-
-### Fix
-
-Check if all dependencies are inside `package.json`
-
-Run locally:
-
-```bash
-npm install
-```
-
-before pushing to GitHub.
-
----
-
-## 2. Server Crashed
-
-### Fix
-
-Verify:
-
-```bash
-node server.js
-```
-
-is the correct start file.
-
-Sometimes it may be:
-
-```bash
-node index.js
-```
-
-or
-
-```bash
-npm start
-```
-
----
-
-## 3. Environment Variables Not Working
-
-### Fix
-
-Make sure `.env` variables are added correctly in Render.
-
-Redeploy service after updating environment variables.
-
----
-
-## 4. MongoDB Connection Error
-
-### Fix
-
-- Check MongoDB URI
-- Check username/password
-- Allow network access in MongoDB Atlas
-
----
-
-# Backend Deployment Complete
-
-Your backend is now successfully hosted on Render.

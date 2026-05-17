@@ -23,12 +23,14 @@ Open terminal in your project folder:
 git init
 git add .
 git commit -m "Initial Commit"
+
 ```
 
 Connect GitHub repository:
 
 ```bash
 git remote add origin YOUR_GITHUB_REPOSITORY_LINK
+git push origin main
 ```
 
 
@@ -38,7 +40,7 @@ Go to:
 
 render
 
-Login using GitHub.
+Login using google.
 
 ---
 

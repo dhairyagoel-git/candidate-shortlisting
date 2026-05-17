@@ -276,3 +276,33 @@ https://your-frontend-name.onrender.com
 ```
 
 Your MERN frontend is now live on Render.
+
+
+---
+
+# Note
+
+If deployment fails for some reason:
+
+1. Go to your Render dashboard
+2. Open your frontend service
+3. Go to **Settings**
+4. Scroll down to:
+
+```bash
+Publish Directory
+```
+
+5. Change it from:
+
+```bash
+build
+```
+
+to:
+
+```bash
+dist
+```
+
+6. Save changes and redeploy the project.

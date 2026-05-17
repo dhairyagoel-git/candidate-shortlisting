@@ -206,7 +206,7 @@ Go to:
 
 https://render.com
 
-Login using GitHub.
+Login using google.
 
 ---
 

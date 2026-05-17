@@ -47,7 +47,7 @@ MONGO_URI=mongodb://localhost:27017/candidate-shortlisting
 OPENROUTER_API_KEY=your_openrouter_api_key_here
 PORT=5000
 ```
-
+ 
 ## API Endpoints
 
 | Method | Endpoint | Description |

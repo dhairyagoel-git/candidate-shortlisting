@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const API = axios.create({
-  baseURL: "/api",
+  baseURL: "https://candidate-shortlisting.onrender.com/api",
 });
 
 export const addCandidate = (data) => API.post("/candidates", data);

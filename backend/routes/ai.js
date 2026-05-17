@@ -21,7 +21,7 @@ router.post("/shortlist", async (req, res) => {
     const candidateList = candidates
       .map(
         (c, i) =>
-          `${i + 1}. ${c.name} - Skills: ${c.skills.join(", ")} - Experience: ${c.experience} years${c.bio ? ` - Bio: ${c.bio}` : ""}`
+          `${i + 1}. ${c.name} - Skills: ${c.skills.join(", ")} - Experience: ${c.experience} years${c.bio ? ` - Bio: ${c.bio}` : ""}`,
       )
       .join("\n");
 
@@ -51,26 +51,32 @@ Format your response as JSON array like this:
 Only return the JSON array, no extra text.
     `.trim();
 
-    const response = await fetch("https://openrouter.ai/api/v1/chat/completions", {
-      method: "POST",
-      headers: {
-        Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
-        "Content-Type": "application/json",
+    const response = await fetch(
+      "https://openrouter.ai/api/v1/chat/completions",
+      {
+        method: "POST",
+        headers: {
+          Authorization: `Bearer ${process.env.OPENROUTER_API_KEY}`,
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify({
+          model: "openai/gpt-4o-mini",
+          max_tokens: 2000,
+          messages: [
+            {
+              role: "user",
+              content: prompt,
+            },
+          ],
+        }),
       },
-      body: JSON.stringify({
-        model: "openai/gpt-4o-mini",
-        messages: [
-          {
-            role: "user",
-            content: prompt,
-          },
-        ],
-      }),
-    });
+    );
 
     if (!response.ok) {
       const errData = await response.json();
-      return res.status(500).json({ error: "OpenRouter API error", details: errData });
+      return res
+        .status(500)
+        .json({ error: "OpenRouter API error", details: errData });
     }
 
     const data = await response.json();
@@ -85,14 +91,16 @@ Only return the JSON array, no extra text.
       if (jsonMatch) {
         aiResults = JSON.parse(jsonMatch[0]);
       } else {
-        return res.status(500).json({ error: "Failed to parse AI response", raw: rawText });
+        return res
+          .status(500)
+          .json({ error: "Failed to parse AI response", raw: rawText });
       }
     }
 
     // Merge AI results with candidate data from DB
     const enriched = aiResults.map((aiCandidate) => {
       const dbCandidate = candidates.find(
-        (c) => c.name.toLowerCase() === aiCandidate.name.toLowerCase()
+        (c) => c.name.toLowerCase() === aiCandidate.name.toLowerCase(),
       );
       return {
         ...aiCandidate,

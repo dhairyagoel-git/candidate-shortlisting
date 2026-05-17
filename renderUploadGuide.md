@@ -278,8 +278,6 @@ https://your-frontend-name.onrender.com
 Your MERN frontend is now live on Render.
 
 
----
-
 # Note
 
 If deployment fails for some reason:
@@ -300,6 +298,38 @@ build
 ```
 
 to:
+
+```bash
+dist
+```
+
+6. Save changes.
+
+---
+
+# Redeploy Project
+
+To redeploy your project:
+
+1. Go to your Render dashboard
+2. Open your frontend service
+3. In the left sidebar click:
+
+```bash
+Events
+```
+
+4. Click:
+
+```bash
+Manual Deploy
+```
+
+5. Then click:
+
+```bash
+Deploy Latest Commit
+```
 
 ```bash
 dist
